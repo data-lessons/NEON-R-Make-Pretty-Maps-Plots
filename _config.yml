@@ -1,10 +1,10 @@
-title: 	NEON Tabular Time Series Lessons
+title: 	NEON Map & Vis Lessons
 description: 	Hackathon held October 21-23 in Boulder, CO at NEON headquarters.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
-url:      http://data-lessons.github.io/NEON-R-Tabular-Time-Series/
-baseurl:   http://data-lessons.github.io/NEON-R-Tabular-Time-Series/
+url:      http://data-lessons.github.io/NEON-R-Make-Pretty-Maps-Plots/
+baseurl:   http://data-lessons.github.io/NEON-R-Make-Pretty-Maps-Plots/
 
 #use this when working locally
 #just uncomment the first localhost.

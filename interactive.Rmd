@@ -374,6 +374,8 @@ saveGIF(
   interval=1)    
 ```
 
+![](./temp.gif)
+
 ## Interactive Plots
 
 ### Raster

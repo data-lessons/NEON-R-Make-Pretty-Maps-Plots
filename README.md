@@ -3,8 +3,7 @@ A repository for the visualization module from spatio-temporal data lesson hacka
 
 ## Workflow
 
-New Rmarkdown (`.Rmd`) posts go into the \_posts folder and must have a date prefix (ie `YYYY-MM-DD`), eg
-`_posts/2015-10-15-spatio-temporal-data-workshop.Rmd`. They also need yaml front matter, like so:
+New Rmarkdown (`.Rmd`) posts go into the `posts` folder. These files need yaml front matter, like so:
 
 ```yaml
 ---
@@ -16,6 +15,8 @@ output: html_document
 ```
 
 You can then knit to HTML in RStudio. Some of the images may show up with "?" but then appear OK, when you view in external browser. Once knitted, you can `git commit -m "some message"` and `git push` to update the Github repository.
+
+Once you add/remove/rename a post, you'll want to run `make.R` which inserts posts by brewing from `index.brew.html` into `index.html`.
 
 ## Details
 
@@ -41,19 +42,4 @@ html_document:
 
 This then places HTML chunks in the header and around the body to provide the NEON navigational template elements.
 
-Note that a yaml header is not output in the rendered HTML which means jekyll does not render the output when hosted on Github. A make file could be added to this folder which for all posts adds a yaml header to induce Jekyll rendering and update any posts with newer inputs. Until this yaml header gets added after rendering, jekyll handling of tags and categories in yaml of posts won't work.
-
-Jekyll works such that the final site is rendered to `_site`. You can install the [jekyll](http://jekyllrb.com/) ruby gem and generate a browsable \_site from the command line:
-
-
-```bash
-jekyll serve --baseurl ''
-```
-
-Then open the URL in a web browser:
-
-```bash
-open http://127.0.0.1:4000
-```
-
-Fancier realtime development options (ie rendering on the fly with every save) are available with [`servr::jekyll()`](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html) and [`servr::make()`](https://github.com/yihui/knitr-jekyll/issues/8).
+Note that [jekyll](http://jekyllrb.com/) has been turned off for the site with the `.nojekyll` file.

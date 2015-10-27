@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Leah Wasser" />
+
+<meta name="date" content="2015-10-27" />
+
+<title>Spatio-Temporal / NEON Data Workshop</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="../assets/css/main.min.local.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="../assets/js/vendor/html5shiv.min.js"></script>
+	<script src="../assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="../assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+<link rel="stylesheet" href="../assets/highlightjs/styles/zenburn.css">
+<script src="../assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; }
+code > span.dt { color: #dfdfbf; }
+code > span.dv { color: #dcdccc; }
+code > span.bn { color: #dca3a3; }
+code > span.fl { color: #c0bed1; }
+code > span.ch { color: #dca3a3; }
+code > span.st { color: #cc9393; }
+code > span.co { color: #7f9f7f; }
+code > span.ot { color: #efef8f; }
+code > span.al { color: #ffcfaf; }
+code > span.fu { color: #efef8f; }
+code > span.er { color: #c3bf9f; }
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<div class="navigation-wrapper">
+  <div class="NEON-header">
+    <img src="../images/banners/header_whole.png" alt="NEON" style="width:100%;">
+  </div>
+	<div class="site-name">
+		<a href="http://data-lessons.github.io/NEON-R-Make-Pretty-Maps-Plots">Spatio-Temporal Data Hackathon</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		  <button type="button" role="button" id="menutoggle" class="navtoogle navicon-lines-button x" aria-hidden="true">
+		    <span class="navicon-lines"></span>menu</button>
+		    <ul>
+				<li><a href="http://data-lessons.github.io/NEON-R-Make-Pretty-Maps-Plots/about/">About</a></li>
+				<li><a href="https://docs.google.com/document/d/1UnqpTCm6H0_alBO0I21jzTMikqLDQ-jSn0_1eJCoPYg/edit#" target="_blank">Agenda</a></li>
+				<li><a href="http://www.neoninc.org/" target="_blank">NEON Website</a></li>
+				<li><a href="http://www.datacarpentry.org/" target="_blank">Data Carpentry Website</a></li>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+<div id="main" role="main">
+  <div class="article-author-side">
+	  <img src="../images/profilePic.png" class="bio-photo" alt="NEON / Data Carpentry Hackathon bio photo">
+    <h3>Spatio-Temporal Data Hackathon</h3>
+    <p>Devoted to open data and open source in science and education.</p>
+  </div>
+
+  <article>
+    <div class="headline-wrap">
+      <h1>Spatio-Temporal Data Hackathon</h1>
+    </div><!--/ .headline-wrap -->
+
+<div id="header">
+<h1 class="title">Spatio-Temporal / NEON Data Workshop</h1>
+<h4 class="author"><em>Leah Wasser</em></h4>
+<h4 class="date"><em>2015-10-27</em></h4>
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#overview">Overview</a><ul>
+<li><a href="#persona">Persona</a></li>
+</ul></li>
+<li><a href="#p1.-the-geospatial-landscape">P1. The Geospatial Landscape</a></li>
+<li><a href="#p2.-work-with-raster-and-vector-data-in-r">P2. Work With Raster and Vector Data In R</a><ul>
+<li><a href="#learning-objectives">Learning Objectives:</a></li>
+</ul></li>
+<li><a href="#download-the-data">Download the Data</a><ul>
+<li><a href="#first-plot-the-basemap-to-see-where-the-tower-boundary-is.">First plot the basemap to see where the tower boundary is.</a></li>
+<li><a href="#opening-a-multi-band-image-is-different-from-opening-a-single-band-image">opening a multi-band image is different from opening a single band image</a></li>
+<li><a href="#vector-data-are-different-from-raster">vector data are different from raster</a></li>
+<li><a href="#crop-the-base-image-to-the-aoi">Crop the Base Image to the AOI</a></li>
+</ul></li>
+<li><a href="#p2b.-working-with-raster-time-series-data">P2b. Working with Raster Time Series Data</a><ul>
+<li><a href="#learning-objectives-1">Learning Objectives:</a></li>
+<li><a href="#note-we-could-crop-these-to-a-larger-boundary.-right-now-they-are-about-1.5mb">NOTE: we could crop these to a larger boundary. right now they are about 1.5mb</a></li>
+<li><a href="#a-tile">a tile…</a><ul>
+<li><a href="#data-cleaning">Data Cleaning</a></li>
+<li><a href="#next-calculate-ndvi">Next calculate NDVI</a></li>
+<li><a href="#plot-ndvi-for-2011">PLOT NDVI for 2011</a></li>
+<li><a href="#note---there-is-a-dc-lesson-on-ggplot-that-we-might-be-able-to">NOTE - there is a DC lesson on GGPLOT that we might be able to</a></li>
+<li><a href="#adapt-to-this">adapt to this!</a></li>
+<li><a href="#below-is-the-same-analysis-for-another-site-for-the-same-time-period">Below is the same analysis for another site for the same time period!</a></li>
+</ul></li>
+<li><a href="#animated-gifs-of-time-series-in-r">Animated Gifs of Time Series in R!</a></li>
+<li><a href="#the-animated-gif">The animated gif!</a></li>
+</ul></li>
+<li><a href="#p3.-project-organization-metadata">P3. Project Organization &amp; Metadata</a><ul>
+<li><a href="#learning-objectives-2">Learning Objectives:</a></li>
+</ul></li>
+<li><a href="#p4.-working-with-csv-format-time-series-data">P4. Working with CSV format Time Series Data</a><ul>
+<li><a href="#learning-objectives-3">Learning Objectives:</a></li>
+<li><a href="#dealing-with-date-and-time">Dealing with Date AND time</a><ul>
+<li><a href="#convert-the-data-to-daily-average">convert the data to daily average</a></li>
+</ul></li>
+<li><a href="#dealing-with-just-date.">Dealing with just date.</a><ul>
+<li><a href="#plot-soil-temperature">plot soil temperature</a></li>
+<li><a href="#convert-to-julian-days">Convert to Julian days</a></li>
+</ul></li>
+<li><a href="#look-at-day-length-data-for-harvard">Look at Day Length Data for Harvard</a><ul>
+<li><a href="#convert-to-julian-days-and-plot">Convert to Julian Days and Plot</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#p5.-data-viz">P5. Data Viz</a></li>
+<li><a href="#p7.-an-automated-workflow">P7. An automated workflow</a></li>
+<li><a href="#remote-sensing-workshop">Remote Sensing Workshop</a></li>
+</ul>
+</div>
+
+<div id="overview" class="section level1">
+<h1>Overview</h1>
+<div id="persona" class="section level2">
+<h2>Persona</h2>
+<p>Jessica, is putting together her dissertation proposal as a part of her PHD program in ecology at University of Boulder, CO. She is interested in exploring some of her field sites to understand how phenology of vegetation (greening in the spring summer and senescence in the winter, varies across multiple sites and through time. Her PhD advisor has given her some data for a few sites which have very different vegetation communities including Harvard Forest (Massachusetts) and San Joachin Experimental Range (California). The data include:</p>
+<p>1.Vegetation greenness (NDVI) derived from the Landsat Satellite (30 meter resolution) for both sites for 2 years derived from the landsat sensor in a raster format. 2. Some high resolution images of the sites. 3. A canopy height model showing tree height 4. A DEM (digital elevation model) showing topography. 5. Site temperature, PAR (Photosynthetic active radiation), Soil temperature, Precipitation and daylength for each day over those two years</p>
+<p>Jessica has done some of the things above using her favorite open source GIS tool - QGIS. However that workflow makes it difficult to process and look at multiple years worth of data. She wants to create an efficient reproducible workflow that she can use as she collects data for more sites and years over time to support her dissertation work. She has never opened shapefiles and rasters in a non-gui environment. She also understands what a raster is but doesn’t know where the ndvi data come from.</p>
+<p>Jessica would like to create the following outputs to better understand her project:</p>
+<ul>
+<li>Plots of temperature, precipitation, PAR and daylength over the 2 year time period (metrics which related to the greening and browning of plants) compared to NDVI (greenness).</li>
+<li>Basemaps of her site showing</li>
+<li>The location of the tower that measured the above variables and imagery showing what the site look like. tree height</li>
+<li>Topography</li>
+<li>A time series animation of NDVI for both sites that she can post on her blog.</li>
+</ul>
+</div>
+</div>
+<div id="p1.-the-geospatial-landscape" class="section level1">
+<h1>P1. The Geospatial Landscape</h1>
+<p><strong>stuff here</strong></p>
+</div>
+<div id="p2.-work-with-raster-and-vector-data-in-r" class="section level1">
+<h1>P2. Work With Raster and Vector Data In R</h1>
+<p>Goal: Participants will know how to import raster and vector data in R, view metadata / attributes of each in R.</p>
+<div id="learning-objectives" class="section level2">
+<h2>Learning Objectives:</h2>
+<ul>
+<li>Understand the difference between vector and raster data (could be covered in P1)</li>
+<li>Know how to open up a shapefile in R (brief explanation of shapefile)</li>
+<li>Understand point, line and polygons</li>
+<li>Know how to open a raster data file in R (brief explanation of geotiff)</li>
+<li>Know how to create a basic map of a raster with a shapefile overlayed.</li>
+</ul>
+<p>Below is some code to look at the data and get this module started.. lots more to add!</p>
+</div>
+</div>
+<div id="download-the-data" class="section level1">
+<h1>Download the Data</h1>
+<p><a href="http://figshare.com/articles/NEON_Spatio_Temporal_Teaching_Dataset/1580068" class="btn btn-success"> DOWNLOAD NEON Spatio-Temporal Teaching Dataset</a></p>
+<p>About the data – more to come here.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#work with rasters</span>
+<span class="kw">library</span>(raster)</code></pre>
+<pre><code>## Loading required package: sp</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#best for importing shapefiles</span>
+<span class="kw">library</span>(rgdal) </code></pre>
+<pre><code>## rgdal: version: 1.0-4, (SVN revision 548)
+##  Geospatial Data Abstraction Library extensions to R successfully loaded
+##  Loaded GDAL runtime: GDAL 1.11.2, released 2015/02/10
+##  Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/gdal
+##  Loaded PROJ.4 runtime: Rel. 4.9.1, 04 March 2015, [PJ_VERSION: 491]
+##  Path to PROJ.4 shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/proj
+##  Linking to sp version: 1.1-1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plotting</span>
+<span class="kw">library</span>(ggplot2)
+
+<span class="kw">options</span>(<span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+
+<span class="co">#set the data directory</span>
+dd =<span class="st"> &#39;../1_WorkshopData&#39;</span></code></pre>
+<div id="first-plot-the-basemap-to-see-where-the-tower-boundary-is." class="section level3">
+<h3>First plot the basemap to see where the tower boundary is.</h3>
+<p>Note, this will require opening up the geotiff imagery for the site. Then plotting</p>
+<p>CRS: UTM ZONE 18N FOR HARVARD CRS: UTM ZONE 11N for SJER</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#import imagery</span>
+chm &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="kw">file.path</span>(dd, <span class="st">&#39;NEON_RemoteSensing/HARV/CHM/HARV_chmCrop.tif&#39;</span>))
+<span class="co">#plot chm (make map?)</span>
+<span class="kw">plot</span>(chm, <span class="dt">main=</span><span class="st">&quot;NEON Canopy Height Model (Tree Height)</span><span class="ch">\n</span><span class="st">Harvard Forest&quot;</span>)</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/view-basemap-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#customize legend, add units (m), remove x and y labels</span></code></pre>
+</div>
+<div id="opening-a-multi-band-image-is-different-from-opening-a-single-band-image" class="section level3">
+<h3>opening a multi-band image is different from opening a single band image</h3>
+<p>We need to use the stack command for this…</p>
+<p>more here..</p>
+<pre class="sourceCode r"><code class="sourceCode r">################### IMPORT MULTI BAND RASTER (image) #########################
+<span class="co">#note that when you import a multi band image you have to import it as a stack </span>
+<span class="co">#rather than a raster... this might be worth pointing out in the lesson.</span>
+<span class="co">#it could be good to start with just a single band raster like a CHM, DEM etc?</span>
+
+baseImage &lt;-<span class="st"> </span><span class="kw">stack</span>(<span class="kw">file.path</span>(dd, <span class="st">&#39;NEON_RemoteSensing/HARV/HARV_RGB_Ortho.tif&#39;</span>))
+
+<span class="co">#plot the image for the site</span>
+<span class="co">#is there a way to plot RGB and add titles, etc (data viz group??)</span>
+<span class="kw">plotRGB</span>(baseImage,<span class="dt">r=</span><span class="dv">1</span>,<span class="dt">g=</span><span class="dv">2</span>,<span class="dt">b=</span><span class="dv">3</span>, 
+        <span class="dt">main=</span><span class="st">&quot;Harvard Tower Site&quot;</span>)</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/import-rgb-image-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="vector-data-are-different-from-raster" class="section level3">
+<h3>vector data are different from raster</h3>
+<p>More here on vectors…</p>
+<p>Open a point, line and polygon layer here. NOTE: need to add line and point!</p>
+<p>ogr is better than maptools (IMO) :) … why</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Import the shapefile </span>
+<span class="co">#note: read ogr is preferred as it maintains prj info</span>
+squarePlot &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="kw">file.path</span>(dd, <span class="st">&quot;boundaryFiles/HARV/&quot;</span>),<span class="st">&quot;HarClip_UTMZ18&quot;</span>)</code></pre>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;../1_WorkshopData/boundaryFiles/HARV/&quot;, layer: &quot;HarClip_UTMZ18&quot;
+## with 1 features
+## It has 1 fields</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#view attributes</span>
+squarePlot</code></pre>
+<pre><code>## class       : SpatialPolygonsDataFrame 
+## features    : 1 
+## extent      : 732128, 732251.1, 4713209, 4713359  (xmin, xmax, ymin, ymax)
+## coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+## variables   : 1
+## names       : id 
+## min values  :  1 
+## max values  :  1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#view crs</span>
+<span class="kw">crs</span>(squarePlot)</code></pre>
+<pre><code>## CRS arguments:
+##  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84
+## +towgs84=0,0,0</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#view extent</span>
+<span class="kw">extent</span>(squarePlot)</code></pre>
+<pre><code>## class       : Extent 
+## xmin        : 732128 
+## xmax        : 732251.1 
+## ymin        : 4713209 
+## ymax        : 4713359</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#look at the polygon</span>
+<span class="kw">plot</span>(squarePlot, <span class="dt">col=</span><span class="st">&quot;purple&quot;</span>)</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/work-with-vectors-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#look at the polygon on top of the imagery</span>
+<span class="kw">plotRGB</span>(baseImage)
+
+<span class="co">#add the plot boundary to the image. Make it a transparent box with a thick outline</span>
+<span class="co">#Note: leah needs to fix the crop box to make it UTM z18 friendly! it will happen.</span>
+<span class="kw">plot</span>(squarePlot, <span class="dt">col=</span><span class="st">&quot;yellow&quot;</span>, <span class="dt">add=</span><span class="ot">TRUE</span>)
+
+<span class="co">#open a line shapefile</span>
+<span class="co">#NOte: this file has attributes so the viz group should work on </span>
+<span class="co">#making maps with multi attribute shapefiles</span>
+<span class="co">#adding legends, etc</span>
+roads &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="kw">file.path</span>(dd, <span class="st">&quot;boundaryFiles/HARV/&quot;</span>),<span class="st">&quot;HARV_roadStream&quot;</span>)</code></pre>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;../1_WorkshopData/boundaryFiles/HARV/&quot;, layer: &quot;HARV_roadStream&quot;
+## with 13 features
+## It has 15 fields</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(roads, <span class="dt">col=</span><span class="st">&quot;yellow&quot;</span>, <span class="dt">add=</span><span class="ot">TRUE</span>)
+
+<span class="co">#add a point</span>
+tower &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="kw">file.path</span>(dd, <span class="st">&quot;boundaryFiles/HARV/&quot;</span>),<span class="st">&quot;HARVtower_UTM18N&quot;</span>)</code></pre>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;../1_WorkshopData/boundaryFiles/HARV/&quot;, layer: &quot;HARVtower_UTM18N&quot;
+## with 1 features
+## It has 14 fields</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#make this a cooler symbol</span>
+<span class="kw">plot</span>(tower, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">add=</span><span class="ot">TRUE</span>)</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/work-with-vectors-2.png" title="" alt="" width="672" /></p>
+</div>
+<div id="crop-the-base-image-to-the-aoi" class="section level3">
+<h3>Crop the Base Image to the AOI</h3>
+<p>This is the area used to clip the NDVI data from. We can expand it a bit. Concerned with size but i think a bit larger could be ok.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#crop the image to the plot boundary?</span>
+<span class="co">#note that crop just uses the extent - not that actual shape of the polygon.</span>
+new &lt;-<span class="st"> </span><span class="kw">crop</span>(baseImage,squarePlot)
+
+<span class="kw">plotRGB</span>(new, <span class="dt">axes=</span>F,<span class="dt">main=</span><span class="st">&quot;RGB image cropped&quot;</span>)</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/crop-image-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#not sure how to add a title to plotRGB??</span>
+
+<span class="co">#export geotiff</span>
+<span class="co">#write the geotiff - change overwrite=TRUE to overwrite=FALSE if you want to </span>
+<span class="co">#make sure you don&#39;t overwrite your files!</span>
+out_tif =<span class="st"> </span><span class="kw">sprintf</span>(<span class="st">&#39;%snew.tif&#39;</span>, img_path)
+<span class="kw">writeRaster</span>(new, out_tif, <span class="dt">overwrite=</span><span class="ot">TRUE</span>)</code></pre>
+</div>
+</div>
+<div id="p2b.-working-with-raster-time-series-data" class="section level1">
+<h1>P2b. Working with Raster Time Series Data</h1>
+<p>Goal: Participants will know how to work with, extract values from and plot a set of rasters in R.</p>
+<div id="learning-objectives-1" class="section level3">
+<h3>Learning Objectives:</h3>
+<ul>
+<li>Know how to open a set of rasters in R as a raster stack</li>
+<li>Know how to plot a raster stack.</li>
+<li>Know how to extract values from a raster</li>
+<li>Know how to extract multiple values from a raster and plot it using GGPLOT.</li>
+</ul>
+<p>Import the NDVI time series.</p>
+</div>
+<div id="note-we-could-crop-these-to-a-larger-boundary.-right-now-they-are-about-1.5mb" class="section level2">
+<h2>NOTE: we could crop these to a larger boundary. right now they are about 1.5mb</h2>
+</div>
+<div id="a-tile" class="section level2">
+<h2>a tile…</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#define the path to write tiffs</span>
+<span class="co">#the other time series for the california sites is in NDVI/D17</span>
+<span class="co">#Note: if it&#39;s best we can also remove the nesting of folders here. I left it</span>
+<span class="co">#just to remember where i got the data from originally! i can just include a note to myself.</span>
+ndvi.tifPath &lt;-<span class="st"> </span><span class="kw">file.path</span>(dd, <span class="st">&quot;Landsat_NDVI/HARV/2011/ndvi/&quot;</span>)
+
+<span class="co">#open up the cropped files</span>
+<span class="co">#create list of files to make raster stack</span>
+allCropped &lt;-<span class="st">  </span><span class="kw">list.files</span>(ndvi.tifPath, <span class="dt">full.names=</span><span class="ot">TRUE</span>, <span class="dt">pattern =</span> <span class="st">&quot;.tif$&quot;</span>)
+
+<span class="co">#create a raster stack from the list</span>
+rastStack &lt;-<span class="st"> </span><span class="kw">stack</span>(allCropped)
+
+<span class="co">#layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))</span>
+<span class="co">#would like to figure out how to plot these with 2-3 in each row rather than 4</span>
+<span class="kw">plot</span>(rastStack, <span class="dt">zlim=</span><span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">10000</span>),<span class="dt">nc=</span><span class="dv">3</span>)</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/process-NDVI-images-HARV-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#VIZ people can show us how to customize the title on the plots</span>
+<span class="co">#Viz people can show us how to adjust the LAYOUT so the figures</span>
+<span class="co">#are easier to read...</span>
+
+<span class="co">#adjust the layout</span>
+<span class="co">#par(mfrow=c(7,2))</span>
+<span class="co">#not sure how to plot fewer columns without throwing errors</span>
+
+<span class="co">#plot histograms for each image</span>
+<span class="kw">hist</span>(rastStack,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">10000</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/process-NDVI-images-HARV-2.png" title="" alt="" width="672" /></p>
+<div id="data-cleaning" class="section level3">
+<h3>Data Cleaning</h3>
+<p>It looks like something is weird with the data… let’s have a closer look at the original images</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#open up the cropped files</span>
+<span class="co">#create list of files to make raster stack</span>
+rgb.allCropped &lt;-<span class="st">  </span><span class="kw">list.files</span>(<span class="st">&quot;Landsat_NDVI/HARV/2011/RGB/&quot;</span>, <span class="dt">full.names=</span><span class="ot">TRUE</span>, <span class="dt">pattern =</span> <span class="st">&quot;.tif$&quot;</span>)
+
+<span class="co">#create a layout</span>
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>))
+
+<span class="co">#plot all images</span>
+<span class="co">#would be nice to label each one but not sure how with plotRGB</span>
+for (aFile in rgb.allCropped){
+  ndvi.rastStack &lt;-<span class="st"> </span><span class="kw">stack</span>(aFile)
+  <span class="kw">plotRGB</span>(ndvi.rastStack, <span class="dt">stretch=</span><span class="st">&quot;lin&quot;</span>)
+}
+
+<span class="co">#reset layout</span>
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</code></pre>
+</div>
+<div id="next-calculate-ndvi" class="section level3">
+<h3>Next calculate NDVI</h3>
+<p>More here…</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#create data frame, calculate NDVI</span>
+ndvi.df.HARV &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(-<span class="dv">999</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="kw">length</span>(allCropped)))
+<span class="kw">colnames</span>(ndvi.df.HARV) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;julianDays&quot;</span>, <span class="st">&quot;meanNDVI&quot;</span>)
+i &lt;-<span class="st"> </span><span class="dv">0</span>
+for (crop in allCropped){
+  i=i<span class="dv">+1</span>
+  <span class="co">#open raster</span>
+  imageCrop &lt;-<span class="st"> </span><span class="kw">raster</span>(crop)
+  
+  <span class="co">#calculate the mean of each</span>
+  ndvi.df.HARV$meanNDVI[i] &lt;-<span class="st"> </span><span class="kw">cellStats</span>(imageCrop,mean) 
+  
+  <span class="co">#grab julian days</span>
+  ndvi.df.HARV$julianDays[i] &lt;-<span class="st"> </span><span class="kw">substr</span>(crop,<span class="kw">nchar</span>(crop)-<span class="dv">21</span>,<span class="kw">nchar</span>(crop)-<span class="dv">19</span>)
+}
+
+<span class="co">#add and populate a year column to the data frame</span>
+ndvi.df.HARV$yr &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">2009</span>)
+<span class="co">#add and populate a site column to the data frame</span>
+ndvi.df.HARV$site &lt;-<span class="st"> &quot;HARV&quot;</span></code></pre>
+</div>
+<div id="plot-ndvi-for-2011" class="section level3">
+<h3>PLOT NDVI for 2011</h3>
+<p>NOTE: will add tiles for 2009-2010 - have 30 years but that is a lot! ###should we expand the extent or not?</p>
+<p>Now, let’s plot NDVI for one year</p>
+<p>NOTE: there are some bad points in the data. this is because of extreme cloud cover in the imagery. I will try to make a few images we can look at to see that these scenes are bad. It might be good for the remote sensing group to cover this.</p>
+</div>
+<div id="note---there-is-a-dc-lesson-on-ggplot-that-we-might-be-able-to" class="section level3">
+<h3>NOTE - there is a DC lesson on GGPLOT that we might be able to</h3>
+</div>
+<div id="adapt-to-this" class="section level3">
+<h3>adapt to this!</h3>
+<pre class="sourceCode r"><code class="sourceCode r">##plot stuff
+<span class="co">#need to figure out the best plotting method to connect the dots! Or a better input format object</span>
+<span class="co">#we also should remove bad points in this layer and explain why the points are bad </span>
+<span class="co">#cloud cover)</span>
+<span class="kw">ggplot</span>(ndvi.df.HARV, <span class="kw">aes</span>(julianDays, meanNDVI)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;NDVI for HARVARD forest 2011</span><span class="ch">\n</span><span class="st">Landsat Derived&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Julian Days&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean NDVI&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/plot-mean-NDVI-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="below-is-the-same-analysis-for-another-site-for-the-same-time-period" class="section level3">
+<h3>Below is the same analysis for another site for the same time period!</h3>
+<p>THe data are for california field site san Joachin experimental range. This might be an option additional activity to compare the two! Note that hte NDVI values are generally lower as it’s a scrubby medit environment. We can include photographs of the sites as well! The data are very interesting!</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#define the path to write tiffs</span>
+tifPath &lt;-<span class="st"> </span><span class="kw">file.path</span>(dd, <span class="st">&quot;Landsat_NDVI/SJER/2011/ndvi/&quot;</span>)
+
+<span class="co">#open up the cropped files</span>
+<span class="co">#create list of files to make raster stack</span>
+allCropped &lt;-<span class="st">  </span><span class="kw">list.files</span>(tifPath, <span class="dt">full.names=</span><span class="ot">TRUE</span>, <span class="dt">pattern =</span> <span class="st">&quot;.tif$&quot;</span>)
+
+<span class="co">#create a raster stack from the list</span>
+rastStack &lt;-<span class="st"> </span><span class="kw">stack</span>(allCropped)
+
+<span class="co">#layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))</span>
+<span class="co">#would like to figure out how to plot these with 2-3 in each row rather than 4</span>
+<span class="kw">plot</span>(rastStack, <span class="dt">zlim=</span><span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">10000</span>),<span class="dt">nc=</span><span class="dv">3</span>)</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/process-NDVI-images-SJER-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#adjust the layout</span>
+<span class="co">#par(mfrow=c(7,2))</span>
+<span class="co">#not sure how to plot fewer columns without throwing errors</span>
+
+<span class="co">#plot histograms for each image</span>
+<span class="kw">hist</span>(rastStack,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">10000</span>))</code></pre>
+<pre><code>## Warning in .local(x, ...): only the first 16 layers are plotted</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/process-NDVI-images-SJER-2.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#create data frame, calculate NDVI</span>
+ndvi.df.SJER &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(-<span class="dv">999</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="kw">length</span>(allCropped)))
+<span class="kw">colnames</span>(ndvi.df.SJER) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;julianDays&quot;</span>, <span class="st">&quot;meanNDVI&quot;</span>)
+i &lt;-<span class="st"> </span><span class="dv">0</span>
+for (crop in allCropped){
+  i=i<span class="dv">+1</span>
+  <span class="co">#open raster</span>
+  imageCrop &lt;-<span class="st"> </span><span class="kw">raster</span>(crop)
+  
+  <span class="co">#calculate the mean of each</span>
+  ndvi.df.SJER$meanNDVI[i] &lt;-<span class="st"> </span><span class="kw">cellStats</span>(imageCrop,mean) 
+  
+  <span class="co">#grab julian days</span>
+  ndvi.df.SJER$julianDays[i] &lt;-<span class="st"> </span><span class="kw">substr</span>(crop,<span class="kw">nchar</span>(crop)-<span class="dv">21</span>,<span class="kw">nchar</span>(crop)-<span class="dv">19</span>)
+}
+
+ndvi.df.SJER$yr &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">2011</span>)
+ndvi.df.SJER$site &lt;-<span class="st"> &quot;SJER&quot;</span>
+
+<span class="co">#plot NDVI</span>
+<span class="kw">ggplot</span>(ndvi.df.SJER, <span class="kw">aes</span>(julianDays, meanNDVI)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;NDVI for SJER 2011</span><span class="ch">\n</span><span class="st">Landsat Derived&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Julian Days&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean NDVI&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/process-NDVI-images-SJER-3.png" title="" alt="" width="672" /></p>
+</div>
+</div>
+<div id="animated-gifs-of-time-series-in-r" class="section level2">
+<h2>Animated Gifs of Time Series in R!</h2>
+<p>Below is simple code to create an animation from a rasterstack.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#create animation ot the NDVI outputs</span>
+<span class="kw">library</span>(animation)
+
+path_gif =<span class="st"> </span><span class="kw">sprintf</span>(<span class="st">&quot;%sndvi.gif&quot;</span>, img_path)
+
+<span class="co">#if(!file.exists(path_gif)) { # Check if the file exists</span>
+  <span class="kw">saveGIF</span>(
+    for (i in <span class="dv">1</span>:<span class="kw">length</span>(allCropped)) {
+                      <span class="kw">plot</span>(rastStack[[i]],
+                      <span class="dt">main=</span><span class="kw">names</span>(rastStack[[i]]),
+                      <span class="dt">legend.lab=</span><span class="st">&quot;NDVI&quot;</span>,
+                      <span class="dt">col=</span><span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">30</span>)),
+                      <span class="dt">zlim=</span><span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">10000</span>) )
+      }, 
+    <span class="dt">movie.name =</span> <span class="st">&#39;temp.gif&#39;</span>, 
+    <span class="dt">ani.width =</span> <span class="dv">300</span>, <span class="dt">ani.height =</span> <span class="dv">300</span>, 
+    <span class="dt">interval=</span>.<span class="dv">5</span>)</code></pre>
+<pre><code>## Executing: 
+## &#39;convert&#39; -loop 0 -delay 50 Rplot1.png Rplot2.png Rplot3.png
+##     Rplot4.png Rplot5.png Rplot6.png Rplot7.png Rplot8.png
+##     Rplot9.png Rplot10.png Rplot11.png Rplot12.png Rplot13.png
+##     Rplot14.png Rplot15.png Rplot16.png Rplot17.png &#39;temp.gif&#39;
+## Output at: temp.gif</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#}</span>
+res =<span class="st"> </span><span class="kw">file.copy</span>(<span class="st">&#39;temp.gif&#39;</span>, path_gif, <span class="dt">overwrite=</span>T)
+res =<span class="st"> </span><span class="kw">file.remove</span>(<span class="st">&#39;temp.gif&#39;</span>)</code></pre>
+</div>
+<div id="the-animated-gif" class="section level2">
+<h2>The animated gif!</h2>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/ndvi.gif" alt="NDVI time series animation" /></p>
+<p>Time series for NDVI for 2011 at Harvard Forest #note it is easy to get more years as well!</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Compare the two sites</span>
+ndvi.df &lt;-<span class="st"> </span><span class="kw">rbind</span>(ndvi.df.SJER,ndvi.df.HARV)  
+  
+<span class="co">#plot NDVI</span>
+<span class="co">#make it look prettier</span>
+<span class="kw">ggplot</span>(ndvi.df, <span class="kw">aes</span>(julianDays, meanNDVI, <span class="dt">colour=</span>site)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>,<span class="kw">aes</span>(<span class="dt">group=</span>site)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>site))+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;NDVI HARV vs. SJER 2011</span><span class="ch">\n</span><span class="st">Landsat Derived&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Julian Days&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean NDVI&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/compare-NDVI-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#the end of this section  </span></code></pre>
+</div>
+</div>
+<div id="p3.-project-organization-metadata" class="section level1">
+<h1>P3. Project Organization &amp; Metadata</h1>
+<p><strong>Goal:</strong> Participants will understand how to organize a project with geospatial data and what metadata are most important to look at.</p>
+<div id="learning-objectives-2" class="section level2">
+<h2>Learning Objectives:</h2>
+<ul>
+<li>Know how to look up and grab key attributes of a shapefile in R (extent, CRS)</li>
+<li>Know how to look up and grab key attributes of a raster in R (extent, CRS)</li>
+<li>Understand CRS (coordinate reference systems)</li>
+<li>Know how to reproject files when they don’t line up</li>
+<li>Understand the files associated with a shapefile.</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#might have stuff about storing data</span>
+<span class="co">#stuff on the files associated with a shapefile</span>
+
+<span class="co">#in this case, our data are organized by</span>
+<span class="co">#metric or type of data and then location then year. </span>
+<span class="co">#thinking about organizing data is important.</span>
+
+<span class="co">#crs and metadata in the geospatial world is also important...</span></code></pre>
+</div>
+</div>
+<div id="p4.-working-with-csv-format-time-series-data" class="section level1">
+<h1>P4. Working with CSV format Time Series Data</h1>
+<p><strong>Goal:</strong> Participants will know how to open, clean and plot quantitative time series data within a text file.</p>
+<div id="learning-objectives-3" class="section level2">
+<h2>Learning Objectives:</h2>
+<ul>
+<li>Participants will know how to open a csv file in R</li>
+<li>How to convert a time field to a time class</li>
+<li>How to convert from date to Julian days.</li>
+<li>Remove NA values from a dataset (clean the data)</li>
+<li>Create a plot using GGPLOT</li>
+<li>Plot multiple variables on one plot</li>
+</ul>
+<p>Below are the time series data.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load ggplot for plotting </span>
+<span class="kw">library</span>(ggplot2)
+<span class="co">#the scales library supports breaks and formatting in ggplot</span>
+<span class="kw">library</span>(scales)
+
+<span class="co">#don&#39;t load strings as factors</span>
+<span class="kw">options</span>(<span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre>
+</div>
+<div id="dealing-with-date-and-time" class="section level2">
+<h2>Dealing with Date AND time</h2>
+<p>SUGGESTION - we should subset this out for just a few years to begin with. I’d recommend 2009-2011 Otherwise it is too big to work with.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#read in 15 min average data</span>
+harMet &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">file.path</span>(dd, <span class="st">&#39;AtmosData/HARV/hf001-10-15min-m.csv&#39;</span>))
+
+<span class="co">#clean up dates</span>
+<span class="co">#remove the &quot;T&quot;</span>
+<span class="co">#harMet$datetime &lt;- fixDate(harMet$datetime,&quot;America/New_York&quot;)</span>
+
+<span class="co"># Replace T and Z with a space</span>
+harMet$datetime &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;T|Z&quot;</span>, <span class="st">&quot; &quot;</span>, harMet$datetime)
+  
+<span class="co">#set the field to be a date field</span>
+harMet$datetime &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(harMet$datetime,<span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d %H:%M&quot;</span>, 
+                          <span class="dt">tz =</span> <span class="st">&quot;GMT&quot;</span>)
+
+<span class="co">#list of time zones</span>
+<span class="co">#https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
+<span class="co">#convert to local time for pretty plotting</span>
+<span class="kw">attributes</span>(harMet$datetime)$tzone &lt;-<span class="st"> &quot;America/New_York&quot;</span>
+
+<span class="co">#subset out some of the data - 2010-2013 </span>
+yr<span class="fl">.09.11</span> &lt;-<span class="st"> </span><span class="kw">subset</span>(harMet, datetime &gt;=<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&#39;2009-01-01 00:00&#39;</span>) &amp;<span class="st"> </span>datetime &lt;=
+<span class="kw">as.POSIXct</span>(<span class="st">&#39;2011-01-01 00:00&#39;</span>))
+
+<span class="co">#as.Date(&quot;2006-02-01 00:00:00&quot;)</span>
+<span class="co">#plot Some Air Temperature Data</span>
+  
+myPlot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(yr<span class="fl">.09.11</span>,<span class="kw">aes</span>(datetime, airt)) +
+<span class="st">           </span><span class="kw">geom_point</span>() +
+<span class="st">           </span><span class="kw">ggtitle</span>(<span class="st">&quot;15 min Avg Air Temperature</span><span class="ch">\n</span><span class="st">Harvard Forest&quot;</span>) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">lineheight=</span>.<span class="dv">8</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>,<span class="dt">size =</span> <span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">xlab</span>(<span class="st">&quot;Time&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Air Temperature&quot;</span>)
+
+<span class="co">#format x axis with dates</span>
+myPlot +<span class="st"> </span><span class="kw">scale_x_datetime</span>(<span class="dt">labels =</span> <span class="kw">date_format</span>(<span class="st">&quot;%m/%d/%y&quot;</span>))</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/import-harvard-met-data-15min-1.png" title="" alt="" width="672" /></p>
+<div id="convert-the-data-to-daily-average" class="section level3">
+<h3>convert the data to daily average</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#convert to daily  julian days</span>
+temp.daily &lt;-<span class="st"> </span><span class="kw">aggregate</span>(yr<span class="fl">.09.11</span>[<span class="st">&quot;airt&quot;</span>], <span class="kw">format</span>(yr<span class="fl">.09.11</span>[<span class="st">&quot;datetime&quot;</span>],<span class="st">&quot;%Y-%j&quot;</span>),
+                 mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) 
+
+
+<span class="co">#not working yet - weird!</span>
+<span class="co">#qplot(temp.daily$datetime,temp.daily$airt)</span>
+<span class="co">#ggplot(temp.daily,aes(datetime, airt)) +</span>
+<span class="co">#           geom_point() +</span>
+<span class="co">#           ggtitle(&quot;Daily Avg Air Temperature\nHarvard Forest&quot;) +</span>
+<span class="co">#           theme(plot.title = element_text(lineheight=.8, face=&quot;bold&quot;,size = 20)) +</span>
+<span class="co">#          theme(text = element_text(size=20)) +</span>
+<span class="co">#           xlab(&quot;Time&quot;) + ylab(&quot;Mean Air Temperature&quot;)</span>
+
+<span class="co">#format x axis with dates</span>
+<span class="co">#myPlot + scale_x_date(labels = date_format(&quot;%m/%d/%y&quot;))</span></code></pre>
+</div>
+</div>
+<div id="dealing-with-just-date." class="section level2">
+<h2>Dealing with just date.</h2>
+<p>the POSIX format is good to go over…One option could be to do the averaging to daily on the data above. But you might need to smooth it so it could get complicated?</p>
+<p>But calculating a daily average could be very useful! Just in case - we can include the daily average with the data if people get hung up or we need to skip over that part. I think we should do it.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#read in daily data</span>
+harMetDaily &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">file.path</span>(dd, <span class="st">&quot;AtmosData/HARV/hf001-06-daily-m.csv&quot;</span>))
+
+  
+<span class="co">#set the field to be a date field</span>
+harMetDaily$date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(harMetDaily$date, <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>)
+
+<span class="co">#subset out some of the data - 2010-2013 </span>
+yr<span class="fl">.09</span>.11_monAvg &lt;-<span class="st"> </span><span class="kw">subset</span>(harMetDaily, date &gt;=<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2009-01-01&#39;</span>) &amp;<span class="st"> </span>date &lt;=
+<span class="kw">as.Date</span>(<span class="st">&#39;2011-01-01&#39;</span>))
+
+<span class="co">#as.Date(&quot;2006-02-01 00:00:00&quot;)</span>
+<span class="co">#plot Some Air Temperature Data</span>
+  
+myPlot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(yr<span class="fl">.09</span>.11_monAvg,<span class="kw">aes</span>(date, airt)) +
+<span class="st">           </span><span class="kw">geom_point</span>() +
+<span class="st">           </span><span class="kw">ggtitle</span>(<span class="st">&quot;Daily Air Temperature</span><span class="ch">\n</span><span class="st">Harvard Forest&quot;</span>) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">lineheight=</span>.<span class="dv">8</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>,<span class="dt">size =</span> <span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">xlab</span>(<span class="st">&quot;Time&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Air Temperature&quot;</span>)
+
+<span class="co">#format x axis with dates</span>
+myPlot +<span class="st"> </span><span class="kw">scale_x_date</span>(<span class="dt">labels =</span> <span class="kw">date_format</span>(<span class="st">&quot;%m/%d/%y&quot;</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/read-Daily-avg-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot Some Air Temperature Data</span>
+  
+myPlot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(yr<span class="fl">.09</span>.11_monAvg,<span class="kw">aes</span>(date, prec)) +
+<span class="st">           </span><span class="kw">geom_point</span>() +
+<span class="st">           </span><span class="kw">ggtitle</span>(<span class="st">&quot;Daily Precipitation</span><span class="ch">\n</span><span class="st">Harvard Forest&quot;</span>) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">lineheight=</span>.<span class="dv">8</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>,<span class="dt">size =</span> <span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">xlab</span>(<span class="st">&quot;Time&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Air Temperature&quot;</span>)
+
+<span class="co">#format x axis with dates</span>
+myPlot +<span class="st"> </span><span class="kw">scale_x_date</span>(<span class="dt">labels =</span> <span class="kw">date_format</span>(<span class="st">&quot;%m/%d/%y&quot;</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/read-Daily-avg-2.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot Some Air Temperature Data</span>
+  
+myPlot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(yr<span class="fl">.09</span>.11_monAvg,<span class="kw">aes</span>(date, part)) +
+<span class="st">           </span><span class="kw">geom_point</span>() +
+<span class="st">           </span><span class="kw">ggtitle</span>(<span class="st">&quot;Daily Avg Total PAR</span><span class="ch">\n</span><span class="st">Harvard Forest&quot;</span>) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">lineheight=</span>.<span class="dv">8</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>,<span class="dt">size =</span> <span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">xlab</span>(<span class="st">&quot;Time&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Total PAR&quot;</span>)
+
+<span class="co">#format x axis with dates</span>
+myPlot +<span class="st"> </span><span class="kw">scale_x_date</span>(<span class="dt">labels =</span> <span class="kw">date_format</span>(<span class="st">&quot;%m/%d/%y&quot;</span>))</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/read-Daily-avg-3.png" title="" alt="" width="672" /></p>
+<div id="plot-soil-temperature" class="section level3">
+<h3>plot soil temperature</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#</span>
+<span class="co">#plot soil temp data </span>
+  
+myPlot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(yr<span class="fl">.09</span>.11_monAvg,<span class="kw">aes</span>(date, s10t)) +
+<span class="st">           </span><span class="kw">geom_point</span>() +
+<span class="st">           </span><span class="kw">ggtitle</span>(<span class="st">&quot;Daily Avg Soil Temp</span><span class="ch">\n</span><span class="st">Harvard Forest&quot;</span>) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">lineheight=</span>.<span class="dv">8</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>,<span class="dt">size =</span> <span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>)) +
+<span class="st">           </span><span class="kw">xlab</span>(<span class="st">&quot;Time&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Soil Temp&quot;</span>)
+
+<span class="co">#format x axis with dates</span>
+myPlot +<span class="st"> </span><span class="kw">scale_x_date</span>(<span class="dt">labels =</span> <span class="kw">date_format</span>(<span class="st">&quot;%m/%d/%y&quot;</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/soil-temp-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="convert-to-julian-days" class="section level3">
+<h3>Convert to Julian days</h3>
+</div>
+</div>
+<div id="look-at-day-length-data-for-harvard" class="section level2">
+<h2>Look at Day Length Data for Harvard</h2>
+<p>NOTE - i need to get the data from 2009-2011 to align with the Landsat Time Series</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load the lubridate package to work with time</span>
+<span class="kw">library</span>(lubridate)
+<span class="co">#readr is ideal to open fixed width files (faster than utils)</span>
+<span class="kw">library</span>(readr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;readr&#39;
+## 
+## The following objects are masked from &#39;package:scales&#39;:
+## 
+##     col_factor, col_numeric</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#read in fixed width file  </span>
+dayLengthHar2011 &lt;-<span class="st"> </span><span class="kw">read.fwf</span>(
+  <span class="dt">file=</span><span class="kw">file.path</span>(dd, <span class="st">&quot;daylength/HARV/Petersham_Mass_2011.txt&quot;</span>),
+  <span class="dt">widths=</span><span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>))
+ 
+<span class="kw">names</span>(dayLengthHar2011) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Day&quot;</span>,<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Feb&quot;</span>,<span class="st">&quot;Mar&quot;</span>,<span class="st">&quot;Apr&quot;</span>,
+                             <span class="st">&quot;May&quot;</span>,<span class="st">&quot;June&quot;</span>,<span class="st">&quot;July&quot;</span>,<span class="st">&quot;Aug&quot;</span>,<span class="st">&quot;Sept&quot;</span>,
+                             <span class="st">&quot;Oct&quot;</span>,<span class="st">&quot;Nov&quot;</span>,<span class="st">&quot;Dec&quot;</span>) 
+<span class="co">#open file  </span>
+<span class="co">#dayLengthHar2015 &lt;- read.csv(file = file.path(dd, &quot;precip_Daylength/Petersham_Mass_2009.txt&quot;), stringsAsFactors = FALSE)</span>
+
+<span class="co">#just pull out the columns with time information</span>
+tempDF &lt;-<span class="st"> </span>dayLengthHar2011[,<span class="dv">2</span>:<span class="dv">13</span>]
+tempDF[] &lt;-<span class="st"> </span><span class="kw">lapply</span>(tempDF, function(x){<span class="kw">hm</span>(x)$hour +<span class="st"> </span><span class="kw">hm</span>(x)$minute/<span class="dv">60</span>})
+<span class="co">#populate original DF with the new time data in decimal hours </span>
+dayLengthHar2011[,<span class="dv">2</span>:<span class="dv">13</span>] &lt;-<span class="st"> </span>tempDF
+
+<span class="co">#plot One MOnth of  data</span>
+<span class="kw">ggplot</span>(dayLengthHar2011, <span class="kw">aes</span>(Day, Jan)) +
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Day Length</span><span class="ch">\n</span><span class="st">Jan 2009&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Day of Month&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Day Length (Hours)&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/Clean-Up-Day-Length-1.png" title="" alt="" width="672" /></p>
+<div id="convert-to-julian-days-and-plot" class="section level3">
+<h3>Convert to Julian Days and Plot</h3>
+<p>Next, plot full year’s worth of daylength for 2011. Note: this could be turned into a function to do multiple files.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#convert to julian days</span>
+
+<span class="co">#stack the data frame</span>
+dayLengthHar2011.st &lt;-<span class="st"> </span><span class="kw">stack</span>(dayLengthHar2011[<span class="dv">2</span>:<span class="dv">13</span>])
+<span class="co">#remove NA values</span>
+dayLengthHar2011.st &lt;-<span class="st"> </span>dayLengthHar2011.st[<span class="kw">complete.cases</span>(dayLengthHar2011.st),]
+<span class="co">#add julian days (count)</span>
+dayLengthHar2011.st$JulianDay&lt;-<span class="kw">seq.int</span>(<span class="kw">nrow</span>(dayLengthHar2011.st))
+<span class="co">#fix names</span>
+<span class="kw">names</span>(dayLengthHar2011.st) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hours&quot;</span>,<span class="st">&quot;Month&quot;</span>,<span class="st">&quot;JulianDay&quot;</span>)
+
+<span class="co">#plot Years Worth of  data</span>
+<span class="kw">ggplot</span>(dayLengthHar2011.st, <span class="kw">aes</span>(JulianDay,Hours)) +
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Day Length</span><span class="ch">\n</span><span class="st">Jan 2011&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Julian Days&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Day Length (Hours)&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>))</code></pre>
+<p><img src="../images/spatio-temporal-data-workshop_files/figure-html/plot-daylength-1.png" title="" alt="" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="p5.-data-viz" class="section level1">
+<h1>P5. Data Viz</h1>
+<p>Goal: Participants will know how create and customize maps of spatial data. Participants will know how to create multi-variable plots of spatial data.</p>
+<p>Learning Objectives:</p>
+<ul>
+<li>Know how to create and customize a map in R</li>
+<li>Know how to plot multiple variables on a plot in R</li>
+</ul>
+<p>Tasks: Create a classified map from a raster (tree height?) - (basic classification, mapping) Customizing a map Dealing with CRS issues (things don’t line up) Converting to online (leaflet?) Plot.ly for time series?? creating layouts with multiple plots</p>
+<p>BE creative - have a look at the data. it might be cool for this group to put together the NDVI time series and other variables. Then make some cool maps and do something online (leaflet, plot.ly)</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Here are things to work on</span>
+
+<span class="co"># Creating a Map in r with a legend and multiple elements</span>
+<span class="co"># import the RGB base image, the shapefile, color the shapefile by atttibute</span>
+<span class="co"># add teh point, customize symbology, colors, labels, title, etc, add a north arrow</span>
+<span class="co"># SO imagine a GIS work flow but do that in R.</span>
+
+<span class="co"># Create a leaflet map showing something?? (optional but could be cool. would require</span>
+<span class="co">#converting to geojson potentially)</span>
+
+<span class="co">#customizing Ggplots and adding multiple variables that are different </span>
+<span class="co">#IE the dataframes can&#39;t be stacked.</span></code></pre>
+</div>
+<div id="p7.-an-automated-workflow" class="section level1">
+<h1>P7. An automated workflow</h1>
+<p>What if we wanted to turn the workflow above into a series of loops and functions that handled the data for multiple sites. What if we added an additional year’s worth of dat to each site?</p>
+<p>processing the above for multiple sites – automating spatial analysis workflow in R</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#end of section</span></code></pre>
+</div>
+<div id="remote-sensing-workshop" class="section level1">
+<h1>Remote Sensing Workshop</h1>
+<p>This group will build on items on the portal They will consider the arc of skillsets needed to work with HSI imagery and lidar starting from beginner to advanced. the materials below might fall somewhere in the middle with some beginner stuff?</p>
+<p><a href="http://neondataskills.org/HDF5/" class="uri">http://neondataskills.org/HDF5/</a></p>
+<p><a href="http://neondataskills.org/lidar/" class="uri">http://neondataskills.org/lidar/</a></p>
+</div>
+
+  </article>
+</div><!-- /.main -->
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

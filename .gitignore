@@ -3,3 +3,4 @@
 .RData
 1_WorkshopData
 .DS_Store
+_site/*

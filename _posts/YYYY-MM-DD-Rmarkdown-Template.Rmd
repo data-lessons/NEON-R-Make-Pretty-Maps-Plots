@@ -1,0 +1,67 @@
+---
+title:  "Template"
+author: "Your Name"
+date:   "`r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r images_path, echo=F}
+# note that the output: html_document options are set by _output.yaml
+#   which includes html in _output folder: header, before_body, after body
+
+# note the date gets automatically set to whenever last knitted
+
+# set image outputs to /images, outside _posts, so jekyll doesn't try to parse
+img_path = sprintf('../images/%s', knitr::opts_chunk$get('fig.path')) # note trailing slash
+knitr::opts_chunk$set(fig.path=sprintf('../images/%s', knitr::opts_chunk$get('fig.path')))
+```
+
+## About
+
+This activity will walk you through the fundamental principles of ...
+
+## Goals / Objectives
+
+After completing this activity, you will know:
+
+- What a raster dataset is and its fundamental attributes.
+- How to import rasters into `R` using the raster library.
+- How to perform raster calculations in `R`.
+
+## Things You'll Need To Complete This Lesson
+
+### R Libraries to Install
+
+- **raster:**  `install.packages('raster')`
+- **rgdal:**  `install.packages('rgdal')`
+
+### Tools To Install
+
+Please be sure you have the most current version of `R` and preferably
+R studio to write your code.
+
+### Data to Download
+
+Download the raster and *in situ* collected vegetation structure data:
+
+<a href="http://neonhighered.org/Data/LidarActivity/CHM_InSitu_Data.zip" class="btn btn-success"> DOWNLOAD Sample NEON LiDAR data in Raster Format & Vegetation Sampling Data</a>
+
+<a href="{{ site.baseurl }}/data/rasterLayers_tif.zip" class="btn btn-success"> DOWNLOAD NEON imagery data (tiff format) California Domain 17 (D17)</a>
+
+The LiDAR and imagery data used to create the rasters in this dataset were 
+collected over the San Joaquin field site located in California (NEON Domain 17) 
+and processed at <a href="http://www.neoninc.org" target="_blank" >NEON </a> 
+headquarters. The entire dataset can be accessed by request from the NEON website.</p>  
+
+### Recommended Pre-Lesson Reading
+
+- [The Relationship Between Raster Resolution, Spatial extent & Number of Pixels - in R](GIS-Spatial-Data/Working-With-Rasters)
+- Read more about the [`raster` R package](http://cran.r-project.org/web/packages/raster/raster.pdf)
+
+# About Raster Data
+Raster or "gridded" data are data that are saved in pixels. In the spatial world, 
+each pixel represents an area on the Earth's surface. For example in the raster 
+below, each pixel represents a particular land cover class that would be found in 
+that location in the real world. 
+
+More on rasters [here](/GIS-Spatial-Data/Working-With-Rasters). 

@@ -2,10 +2,10 @@ html_document:
   toc: true
   toc_depth: 4
   self_contained: false
-  lib_dir: libs
-  pandoc_args: [
-      "--title-prefix", "Spatio-Temporal NEON Data Workshop",
-    ]
+  lib_dir: ../libs
+#  pandoc_args: [
+#      "--title-prefix", "Spatio-Temporal NEON Data Workshop",
+#    ]
   highlight: zenburn
   includes:
     in_header:   _output/header.html

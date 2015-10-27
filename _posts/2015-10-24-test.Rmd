@@ -28,6 +28,8 @@ $$
 #knitr::set_header(tikz = "----\ntest: hey\n----\n")
 rmarkdown::metadata
 summary(cars)
+
+DT::datatable(cars)
 ```
 
 You can also embed plots, for example:

@@ -1,5 +1,5 @@
 # NEON-DC-DataLesson-Hackathon
-A repo for the spatio-temporal data lesson hackathon.
+A repository for the visualization module from spatio-temporal data lesson hackathon. This site is viewable at http://data-lessons.github.com/NEON-R-Make-Pretty-Maps-Plots.
 
 ## Workflow
 

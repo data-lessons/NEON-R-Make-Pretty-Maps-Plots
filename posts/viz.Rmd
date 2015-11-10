@@ -231,12 +231,8 @@ plot(x = dayAtm[,'jd'],y = dayAtm[,'airt'],type='n',xlab="",ylab="",bty="n",xaxt
   # whr = which rows of the data are from 2011
   yr = format(as.Date(dayAtm[,'date']),"%Y")
   whr = which(yr =='2011')
-  # store a rolling mean for 2011 to smooth the data
-  #meanTemp <- rollmean(dayAtm[whr,'airt'],30)
-  meanTemp <- c(
-    rollmean(dayAtm[whr,'airt'],30, align='left')[1:14],
-    rollmean(dayAtm[whr,'airt'],30, align='center'),
-    rollmean(dayAtm[whr,'airt'],30, align='right')[(365-15-30+2):(365-30+1)])
+  # store a running median for 2011 to smooth the data
+  meanTemp <- runmed(dayAtm[whr,'airt'],31)
   # store the days for 2011
   days <- dayAtm[whr,'jd']
   # Add 2011 data as a line. lwd = line width
